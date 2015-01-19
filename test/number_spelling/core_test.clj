@@ -15,4 +15,6 @@
     "it can spell two-digit numbers until 19" 
     (spell 10) => "ten"
     (spell 11) => "eleven"
-    (spell 19) => "nineteen"))
+    (spell 19) => "nineteen")
+  
+  (spell 20) => "twenty")

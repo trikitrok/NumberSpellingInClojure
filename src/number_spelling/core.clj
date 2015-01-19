@@ -20,7 +20,8 @@
    16 "sixteen"
    17 "seventeen"
    18 "eightteen"
-   19 "nineteen"})
+   19 "nineteen"
+   20 "twenty"})
 
 (defn spell [number]
   (get one-word-numbers number))
