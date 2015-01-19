@@ -21,7 +21,8 @@
    17 "seventeen"
    18 "eightteen"
    19 "nineteen"
-   20 "twenty"})
+   20 "twenty"
+   30 "thirty"})
 
 (defn spell [number]
   (if-let [one-word-number (get one-word-numbers number)]
