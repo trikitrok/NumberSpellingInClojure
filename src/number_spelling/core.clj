@@ -28,5 +28,5 @@
   (if-let [one-word-number (get one-word-numbers number)]
     one-word-number
     (str (get one-word-numbers 20)
-         " and "
+         " "
          (get one-word-numbers (- number 20)))))
