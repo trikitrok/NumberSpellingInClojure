@@ -13,4 +13,6 @@
    9 "nine"})
 
 (defn spell [number]
-  (get units number))
+  (if (= number 10)
+    "ten"
+    (get units number)))
