@@ -1,6 +1,6 @@
 (ns number-spelling.core)
 
-(def ^:private spellings-by-number 
+(def ^:private one-word-numbers 
   {0 "zero"
    1 "one"
    2 "two"
@@ -12,7 +12,15 @@
    8 "eight"
    9 "nine"
    10 "ten"
-   11 "eleven"})
+   11 "eleven"
+   12 "twelve"
+   13 "thirteen"
+   14 "fourteen"
+   15 "fifteen"
+   16 "sixteen"
+   17 "seventeen"
+   18 "eightteen"
+   19 "nineteen"})
 
 (defn spell [number]
-  (get spellings-by-number number))
+  (get one-word-numbers number))

@@ -11,5 +11,8 @@
     (spell 1) => "one"
     (spell 9) => "nine")
   
-  (spell 10) => "ten"
-  (spell 11) => "eleven")
+  (fact 
+    "it can spell two-digit numbers until 19" 
+    (spell 10) => "ten"
+    (spell 11) => "eleven"
+    (spell 19) => "nineteen"))
