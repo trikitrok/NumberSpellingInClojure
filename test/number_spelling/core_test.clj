@@ -4,5 +4,9 @@
 
 (facts 
   "about number-spelling"
-  (spell 0) => "zero"
-  (spell 1) => "one")
+  
+  (fact 
+    "it can spell one-digit numbers" 
+    (spell 0) => "zero"
+    (spell 1) => "one"
+    (spell 9) => "nine"))
