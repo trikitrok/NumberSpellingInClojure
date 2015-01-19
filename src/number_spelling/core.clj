@@ -27,6 +27,8 @@
 (defn spell [number]
   (if-let [one-word-number (get one-word-numbers number)]
     one-word-number
-    (str (get one-word-numbers 20)
-         " "
-         (get one-word-numbers (- number 20)))))
+    (let [closest-ten-multiple (* (quot number 10) 10)]
+      (str (get one-word-numbers closest-ten-multiple)
+           " "
+           (get one-word-numbers (- number closest-ten-multiple))))))
+
