@@ -11,4 +11,5 @@
     (spell 1) => "one"
     (spell 9) => "nine")
   
-  (spell 10) => "ten")
+  (spell 10) => "ten"
+  (spell 11) => "eleven")

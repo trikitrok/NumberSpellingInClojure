@@ -1,6 +1,6 @@
 (ns number-spelling.core)
 
-(def ^:private units 
+(def ^:private spellings-by-number 
   {0 "zero"
    1 "one"
    2 "two"
@@ -10,9 +10,9 @@
    6 "six"
    7 "seven"
    8 "eight"
-   9 "nine"})
+   9 "nine"
+   10 "ten"
+   11 "eleven"})
 
 (defn spell [number]
-  (if (= number 10)
-    "ten"
-    (get units number)))
+  (get spellings-by-number number))
