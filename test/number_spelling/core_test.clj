@@ -4,4 +4,5 @@
 
 (facts 
   "about number-spelling"
-  (spell 0) => "zero")
+  (spell 0) => "zero"
+  (spell 1) => "one")

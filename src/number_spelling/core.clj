@@ -1,4 +1,6 @@
 (ns number-spelling.core)
 
 (defn spell [number]
-  "zero")
+  (if (zero? number)
+    "zero"
+    "one"))
