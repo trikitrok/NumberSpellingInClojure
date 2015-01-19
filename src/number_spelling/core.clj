@@ -1,6 +1,8 @@
 (ns number-spelling.core)
 
+(def ^:private units 
+  {0 "zero"
+   1 "one"})
+
 (defn spell [number]
-  (if (zero? number)
-    "zero"
-    "one"))
+  (get units number))
