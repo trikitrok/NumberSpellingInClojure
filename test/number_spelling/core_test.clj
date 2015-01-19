@@ -12,12 +12,12 @@
     (spell 9) => "nine")
   
   (fact 
-    "it can spell two-digit numbers until 19" 
+    "it can spell two-digit numbers until 99" 
     (spell 10) => "ten"
     (spell 11) => "eleven"
-    (spell 19) => "nineteen")
-  
-  (spell 20) => "twenty"
-  (spell 21) => "twenty one"
-  (spell 30) => "thirty"
-  (spell 39) => "thirty nine")
+    (spell 19) => "nineteen"
+    (spell 20) => "twenty"
+    (spell 21) => "twenty one"
+    (spell 30) => "thirty"
+    (spell 39) => "thirty nine"
+    (spell 95) => "ninety five"))

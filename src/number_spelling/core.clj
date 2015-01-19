@@ -22,7 +22,13 @@
    18 "eightteen"
    19 "nineteen"
    20 "twenty"
-   30 "thirty"})
+   30 "thirty"
+   40 "forty"
+   50 "fifty"
+   60 "sixty"
+   70 "seventy"
+   80 "eighty"
+   90 "ninety"})
 
 (defn spell [number]
   (if-let [one-word-number (get one-word-numbers number)]
