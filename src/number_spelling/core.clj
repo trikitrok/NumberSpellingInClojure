@@ -2,22 +2,26 @@
 
 (declare 
   one-word-numbers
-  num-digits)
+  num-digits
+  pow)
 
 (defn spell [number]
   (if-let [one-word-number (get one-word-numbers number)]
     one-word-number
     (case (num-digits number)
       
-      2 (let [closest-ten-multiple (* (quot number 10) 10)]
+      2 (let [closest-ten-multiple (* (quot number (pow 10 (dec 2))) (pow 10 (dec 2)))]
           (str (get one-word-numbers closest-ten-multiple)
                " "
                (get one-word-numbers (- number closest-ten-multiple))))
       
-      3 (let [closest-hundred-multiple (* (quot number 100) 100)]
+      3 (let [closest-hundred-multiple (* (quot number (pow 10 (dec 3))) (pow 10 (dec 3)))]
           (str (get one-word-numbers closest-hundred-multiple)
                " and "
                (get one-word-numbers (- number closest-hundred-multiple)))))))
+
+(defn- pow [base exp]
+  (reduce * (repeat exp base)))
 
 (def ^:private one-word-numbers 
   {0 "zero"

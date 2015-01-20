@@ -2,3 +2,8 @@
 (quot 39 10)
 (count (str 3))
 (count (str 33))
+(repeat 2 3)
+(defn- pow [base exp]
+  (reduce * (repeat exp base)))
+(pow 2 3)
+(pow 2 4)
