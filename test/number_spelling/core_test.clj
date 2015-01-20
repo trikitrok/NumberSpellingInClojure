@@ -61,5 +61,7 @@
     "it can spell ten-digit numbers"
     (spell 9999999999) => "nine billion, nine hundred and ninety nine million, nine hundred and ninety nine thousand, nine hundred and ninety nine")
   
-  (spell 9999999999999) => 
-  "nine thousand, nine hundred and ninety nine billion, nine hundred and ninety nine million, nine hundred and ninety nine thousand, nine hundred and ninety nine")
+  (fact
+    "it can spell a lot of billions"
+    (spell 9999999999999) => 
+    "nine thousand, nine hundred and ninety nine billion, nine hundred and ninety nine million, nine hundred and ninety nine thousand, nine hundred and ninety nine"))

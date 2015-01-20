@@ -71,4 +71,3 @@
 
 (defn- num-digits [number]
   (count (str number)))
-
