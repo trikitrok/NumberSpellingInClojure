@@ -4,10 +4,6 @@
   one-word-numbers
   num-digits
   pow
-  separators
-  closest-power-of-ten
-  postfixes
-  spell-number-under-100
   spell-number)
 
 (defn spell [number]
@@ -19,8 +15,13 @@
     (> (num-digits number) 3) (spell-number number 3 "thousand" ", ")
     
     (> (num-digits number) 2) (spell-number number 2 "hundred" " and ")
-        
-    :else (spell-number-under-100 number)))
+    
+    :else (if-let [one-word-number (get one-word-numbers number)]
+            one-word-number  
+            (str (spell (* (quot number 10) 10))
+                 (if (zero? (rem number 10))
+                   ""
+                   (str " " (spell (rem number 10))))))))
 
 (defn- spell-number [number digits separator1 separator2]
   (let [power-of-ten (pow 10 digits)
@@ -32,43 +33,8 @@
            ""
            (str separator2 (spell over-power-of-ten))))))
 
-(defn- spell-number-under-100 [number]
-  (if-let [one-word-number (get one-word-numbers number)]
-    one-word-number
-    
-    (let [num-digits (num-digits number)
-          multiple-of-closest-power-of-ten (quot number 10)
-          closest-power-of-ten (closest-power-of-ten number num-digits)
-          num-minus-closest-power-of-ten (- number closest-power-of-ten)]
-      
-      (str 
-        (if-let [one-word-number (get one-word-numbers closest-power-of-ten)]
-          one-word-number
-          (spell-number-under-100 multiple-of-closest-power-of-ten))
-        
-        (if (zero? num-minus-closest-power-of-ten)
-          ""
-          (str
-            (get separators num-digits) 
-            (spell-number-under-100 num-minus-closest-power-of-ten)))))))
-
-(defn- closest-power-of-ten [number num-digits]
-  (* (quot number (pow 10 (dec num-digits))) 
-     (pow 10 (dec num-digits))))
-
-(def ^:private postfixes
-  {1 ""
-   2 ""
-   3 " hundred"
-   4 " thousand"})
-
 (defn- pow [base exp]
   (reduce * (repeat exp base)))
-
-(def ^:private separators
-  {2 " "
-   3 " and "
-   4 ", "})
 
 (def ^:private one-word-numbers 
   {0 "zero"
