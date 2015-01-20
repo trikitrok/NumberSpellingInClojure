@@ -9,17 +9,12 @@
 (defn spell [number]
   (if-let [one-word-number (get one-word-numbers number)]
     one-word-number
-    (case (num-digits number)
-      
-      2 (let [closest-ten-multiple (* (quot number (pow 10 (dec 2))) (pow 10 (dec 2)))]
-          (str (get one-word-numbers closest-ten-multiple)
-               (get separators 2)
-               (get one-word-numbers (- number closest-ten-multiple))))
-      
-      3 (let [closest-hundred-multiple (* (quot number (pow 10 (dec 3))) (pow 10 (dec 3)))]
-          (str (get one-word-numbers closest-hundred-multiple)
-               (get separators 3)
-               (get one-word-numbers (- number closest-hundred-multiple)))))))
+    
+    (let [num-digits (num-digits number)
+          closest-power-of-ten (* (quot number (pow 10 (dec num-digits))) (pow 10 (dec num-digits)))]
+          (str (get one-word-numbers closest-power-of-ten)
+               (get separators num-digits)
+               (spell (- number closest-power-of-ten))))))
 
 (defn- pow [base exp]
   (reduce * (repeat exp base)))
