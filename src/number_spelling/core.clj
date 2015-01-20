@@ -37,14 +37,16 @@
 (def ^:private postfixes
   {1 ""
    2 ""
-   3 " hundred"})
+   3 " hundred"
+   4 " thousand"})
 
 (defn- pow [base exp]
   (reduce * (repeat exp base)))
 
 (def ^:private separators
   {2 " "
-   3 " and "})
+   3 " and "
+   4 ", "})
 
 (def ^:private one-word-numbers 
   {0 "zero"
