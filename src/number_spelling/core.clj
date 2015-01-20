@@ -6,9 +6,17 @@
   pow
   separators
   closest-power-of-ten
-  postfixes)
+  postfixes
+  spell-number-under-thousand)
 
 (defn spell [number]
+  (if (> number 1000)
+    (str (spell-number-under-thousand (quot number 1000))
+         " thousand, "
+         (spell-number-under-thousand (rem number 1000)))
+    (spell-number-under-thousand number)))
+
+(defn- spell-number-under-thousand [number]
   (if-let [one-word-number (get one-word-numbers number)]
     one-word-number
     
@@ -20,7 +28,7 @@
       (str 
         (if-let [one-word-number (get one-word-numbers closest-power-of-ten)]
           one-word-number
-          (spell multiple-of-closest-power-of-ten))
+          (spell-number-under-thousand multiple-of-closest-power-of-ten))
         
         (get postfixes num-digits)
         
@@ -28,7 +36,7 @@
           ""
           (str
             (get separators num-digits) 
-            (spell num-minus-closest-power-of-ten)))))))
+            (spell-number-under-thousand num-minus-closest-power-of-ten)))))))
 
 (defn- closest-power-of-ten [number num-digits]
   (* (quot number (pow 10 (dec num-digits))) 
