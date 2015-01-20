@@ -4,17 +4,21 @@
   one-word-numbers
   num-digits
   pow
-  separators)
+  separators
+  closest-power-of-ten)
 
 (defn spell [number]
   (if-let [one-word-number (get one-word-numbers number)]
     one-word-number
     
     (let [num-digits (num-digits number)
-          closest-power-of-ten (* (quot number (pow 10 (dec num-digits))) (pow 10 (dec num-digits)))]
+          closest-power-of-ten (closest-power-of-ten number num-digits)]
           (str (get one-word-numbers closest-power-of-ten)
                (get separators num-digits)
                (spell (- number closest-power-of-ten))))))
+
+(defn- closest-power-of-ten [number num-digits]
+  (* (quot number (pow 10 (dec num-digits))) (pow 10 (dec num-digits))))
 
 (defn- pow [base exp]
   (reduce * (repeat exp base)))
