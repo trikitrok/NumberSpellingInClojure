@@ -31,7 +31,9 @@
   
   (fact
     "it can spell four-digit numbers"
+    (spell 1000) => "one thousand"
     (spell 1501) => "one thousand, five hundred and one"
+    (spell 9000) => "nine thousand"
     (spell 9999) => "nine thousand, nine hundred and ninety nine")
   
   (fact
@@ -40,5 +42,24 @@
     (spell 99999) => "ninety nine thousand, nine hundred and ninety nine")
   
   (fact
-    "it can spell five-digit numbers"
-    (spell 999999) => "nine hundred and ninety nine thousand, nine hundred and ninety nine"))
+    "it can spell six-digit numbers"
+    (spell 999999) => "nine hundred and ninety nine thousand, nine hundred and ninety nine")
+  
+  (fact
+    "it can spell seven-digit numbers"
+    (spell 9999999) => "nine million, nine hundred and ninety nine thousand, nine hundred and ninety nine")
+  
+  (fact
+    "it can spell eight-digit numbers"
+    (spell 99999999) => "ninety nine million, nine hundred and ninety nine thousand, nine hundred and ninety nine")
+  
+  (fact
+    "it can spell nine-digit numbers"
+    (spell 999999999) => "nine hundred and ninety nine million, nine hundred and ninety nine thousand, nine hundred and ninety nine")
+  
+  (fact
+    "it can spell ten-digit numbers"
+    (spell 9999999999) => "nine billion, nine hundred and ninety nine million, nine hundred and ninety nine thousand, nine hundred and ninety nine")
+  
+  (spell 9999999999999) => 
+  "nine thousand, nine hundred and ninety nine billion, nine hundred and ninety nine million, nine hundred and ninety nine thousand, nine hundred and ninety nine")
