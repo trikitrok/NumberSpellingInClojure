@@ -20,4 +20,6 @@
     (spell 21) => "twenty one"
     (spell 30) => "thirty"
     (spell 39) => "thirty nine"
-    (spell 95) => "ninety five"))
+    (spell 95) => "ninety five")
+  
+  (spell 100) => "one hundred")
