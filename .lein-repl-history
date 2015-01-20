@@ -1,1 +1,4 @@
+(quote 39 10)
 (quot 39 10)
+(count (str 3))
+(count (str 33))

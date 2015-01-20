@@ -22,4 +22,5 @@
     (spell 39) => "thirty nine"
     (spell 95) => "ninety five")
   
-  (spell 100) => "one hundred")
+  (spell 100) => "one hundred"
+  (spell 103) => "one hundred and three")

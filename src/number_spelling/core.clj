@@ -1,5 +1,24 @@
 (ns number-spelling.core)
 
+(declare 
+  one-word-numbers
+  num-digits)
+
+(defn spell [number]
+  (if-let [one-word-number (get one-word-numbers number)]
+    one-word-number
+    (case (num-digits number)
+      
+      2 (let [closest-ten-multiple (* (quot number 10) 10)]
+          (str (get one-word-numbers closest-ten-multiple)
+               " "
+               (get one-word-numbers (- number closest-ten-multiple))))
+      
+      3 (let [closest-hundred-multiple (* (quot number 100) 100)]
+          (str (get one-word-numbers closest-hundred-multiple)
+               " and "
+               (get one-word-numbers (- number closest-hundred-multiple)))))))
+
 (def ^:private one-word-numbers 
   {0 "zero"
    1 "one"
@@ -31,11 +50,6 @@
    90 "ninety"
    100 "one hundred"})
 
-(defn spell [number]
-  (if-let [one-word-number (get one-word-numbers number)]
-    one-word-number
-    (let [closest-ten-multiple (* (quot number 10) 10)]
-      (str (get one-word-numbers closest-ten-multiple)
-           " "
-           (get one-word-numbers (- number closest-ten-multiple))))))
+(defn- num-digits [number]
+  (count (str number)))
 
