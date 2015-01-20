@@ -5,20 +5,39 @@
   num-digits
   pow
   separators
-  closest-power-of-ten)
+  closest-power-of-ten
+  postfixes)
 
 (defn spell [number]
   (if-let [one-word-number (get one-word-numbers number)]
     one-word-number
     
     (let [num-digits (num-digits number)
-          closest-power-of-ten (closest-power-of-ten number num-digits)]
-          (str (get one-word-numbers closest-power-of-ten)
-               (get separators num-digits)
-               (spell (- number closest-power-of-ten))))))
+          multiple-of-closest-power-of-ten (quot number (pow 10 (dec num-digits)))
+          closest-power-of-ten (closest-power-of-ten number num-digits)
+          num-minus-closest-power-of-ten (- number closest-power-of-ten)]
+      
+      (str 
+        (if-let [one-word-number (get one-word-numbers closest-power-of-ten)]
+          one-word-number
+          (spell multiple-of-closest-power-of-ten))
+        
+        (get postfixes num-digits)
+        
+        (if (zero? num-minus-closest-power-of-ten)
+          ""
+          (str
+            (get separators num-digits) 
+            (spell num-minus-closest-power-of-ten)))))))
 
 (defn- closest-power-of-ten [number num-digits]
-  (* (quot number (pow 10 (dec num-digits))) (pow 10 (dec num-digits))))
+  (* (quot number (pow 10 (dec num-digits))) 
+     (pow 10 (dec num-digits))))
+
+(def ^:private postfixes
+  {1 ""
+   2 ""
+   3 " hundred"})
 
 (defn- pow [base exp]
   (reduce * (repeat exp base)))
@@ -55,8 +74,7 @@
    60 "sixty"
    70 "seventy"
    80 "eighty"
-   90 "ninety"
-   100 "one hundred"})
+   90 "ninety"})
 
 (defn- num-digits [number]
   (count (str number)))

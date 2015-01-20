@@ -24,4 +24,5 @@
   
   (spell 100) => "one hundred"
   (spell 103) => "one hundred and three"
-  (spell 199) => "one hundred and ninety nine")
+  (spell 199) => "one hundred and ninety nine"
+  (spell 999) => "nine hundred and ninety nine")
