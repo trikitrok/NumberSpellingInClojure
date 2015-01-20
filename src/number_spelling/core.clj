@@ -3,7 +3,8 @@
 (declare 
   one-word-numbers
   num-digits
-  pow)
+  pow
+  separators)
 
 (defn spell [number]
   (if-let [one-word-number (get one-word-numbers number)]
@@ -12,16 +13,20 @@
       
       2 (let [closest-ten-multiple (* (quot number (pow 10 (dec 2))) (pow 10 (dec 2)))]
           (str (get one-word-numbers closest-ten-multiple)
-               " "
+               (get separators 2)
                (get one-word-numbers (- number closest-ten-multiple))))
       
       3 (let [closest-hundred-multiple (* (quot number (pow 10 (dec 3))) (pow 10 (dec 3)))]
           (str (get one-word-numbers closest-hundred-multiple)
-               " and "
+               (get separators 3)
                (get one-word-numbers (- number closest-hundred-multiple)))))))
 
 (defn- pow [base exp]
   (reduce * (repeat exp base)))
+
+(def ^:private separators
+  {2 " "
+   3 " and "})
 
 (def ^:private one-word-numbers 
   {0 "zero"
