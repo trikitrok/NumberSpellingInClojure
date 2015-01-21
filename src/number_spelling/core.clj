@@ -38,6 +38,9 @@
 (defn- pow [base exp]
   (reduce * (repeat exp base)))
 
+(defn- num-digits [number]
+  (count (str number)))
+
 (def ^:private one-word-numbers 
   {0 "zero"
    1 "one"
@@ -67,6 +70,3 @@
    70 "seventy"
    80 "eighty"
    90 "ninety"})
-
-(defn- num-digits [number]
-  (count (str number)))
