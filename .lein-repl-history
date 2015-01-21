@@ -7,3 +7,5 @@
   (reduce * (repeat exp base)))
 (pow 2 3)
 (pow 2 4)
+(str "hola" nil)
+(str "hola" "")
